@@ -5,7 +5,8 @@ LINKER = g++
 #compiler and linker flags
 # -Wall: all warnings on, -g: generate debug information
 DEBUG = -g
-CFLAGS = -std=c++11 -Wall $(DEBUG)
+OPTIMIZATION = -O2
+CFLAGS = -std=c++11 -Wall $(DEBUG) $(OPTIMIZATION)
 LDFLAGS = -Wall
 
 #source files
