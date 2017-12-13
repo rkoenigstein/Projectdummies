@@ -1,10 +1,12 @@
 #define variables for compiler and linker to use
 CC = gcc
-LINKER = gcc 
+LINKER = gcc
 
 #compiler and linker flags
 # -Wall: all warnings on, -g: generate debug information
-CFLAGS = -std=c99 -Wall -g
+DEBUG = -g
+OPTIMIZATION = -O2
+CFLAGS = -std=c99 -Wall $(DEBUG) $(OPTIMIZATION)
 LDFLAGS = -Wall
 
 #source files
@@ -17,7 +19,7 @@ OBJS = $(SRC:%.c=%.o)
 #executable
 EXECUTABLE = helloworld
 
-#clean up 
+#clean up
 RM = rm -f
 
 $(EXECUTABLE): $(OBJS)
@@ -29,7 +31,6 @@ $(OBJS): %.o : %.c
 	@echo "Complied "$<" successfully"
 
 .PHONY: clean
-clean: 
+clean:
 	$(RM) $(EXECUTABLE) $(OBJS)
 	@echo "Cleanup done"
-
