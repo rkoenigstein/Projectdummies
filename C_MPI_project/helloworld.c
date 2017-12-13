@@ -16,7 +16,8 @@ int main(int argc, char *argv[])
 	MPI_Comm_size(MPI_COMM_WORLD, &commsize);
 
 	file = popen("cat /proc/sys/kernel/hostname", "r");
-	fscanf(file, "%s", hostname);
+	if(fscanf(file, "%s", hostname) != 1)
+		printf("Failed to read host\n");
 	fclose(file);	
 
 	printf("Rank: %d, Commsize: %d, host: %s\n", rank, commsize, hostname);

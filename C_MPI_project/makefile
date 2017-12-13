@@ -1,10 +1,12 @@
 #define variables for compiler and linker to use
 CC = mpicc
-LINKER = mpicc 
+LINKER = mpicc
 
 #compiler and linker flags
 # -Wall: all warnings on, -g: generate debug information
-CFLAGS = -std=c99 -Wall -g
+DEBUG = -g
+OPTIMIZATION = -O2
+CFLAGS = -std=c99 -Wall $(DEBUG) $(OPTIMIZATION)
 LDFLAGS = -Wall
 
 #source files
@@ -29,7 +31,6 @@ $(OBJS): %.o : %.c
 	@echo "Complied "$<" successfully"
 
 .PHONY: clean
-clean: 
-	$(RM) $(EXECUTABLE) $(OBJS) 
+clean:
+	$(RM) $(EXECUTABLE) $(OBJS)
 	@echo "Cleanup done"
-
